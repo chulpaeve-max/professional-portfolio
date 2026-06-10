@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: portfolio-website
+    name: professional-portfolio
     env: java
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/professional-website-1.0.0.jar
