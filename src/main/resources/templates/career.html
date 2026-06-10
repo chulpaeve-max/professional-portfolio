@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Journey</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" th:text="${profile.name != null && !profile.name.isEmpty() ? profile.name : 'Portfolio'}">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/career" class="active">Career</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/chat">AI Chat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Career Journey</h1>
+        <div class="header-line"></div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <div class="timeline">
+                
+                <div class="timeline-item" th:each="exp, iterStat : ${profile.experiences}" th:if="${exp.title != null && exp.title != ''}">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date" th:if="${exp.period != null}" th:text="${exp.period + (exp.duration != null ? ' · ' + exp.duration : '')}">Period</span>
+                        <h3 th:text="${exp.title}">Title</h3>
+                        <h4 th:if="${exp.company != null}" th:text="${exp.company}">Company</h4>
+                        <p class="location" th:if="${exp.location != null}" th:text="${exp.location}">Location</p>
+                        <ul class="achievements" th:if="${exp.achievements != null && !exp.achievements.isEmpty()}">
+                            <li th:each="achievement : ${exp.achievements}" th:text="${achievement}">Achievement</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

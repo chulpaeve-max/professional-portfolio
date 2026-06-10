@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" th:text="${profile.name != null && !profile.name.isEmpty() ? profile.name : 'Portfolio'}">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/career">Career</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/chat">AI Chat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" th:if="${profile.name != null && !profile.name.isEmpty()}" th:text="${profile.name}">Portfolio</h1>
+            <h1 class="glitch" th:if="${profile.name == null || profile.name.isEmpty()}">Portfolio</h1>
+            <p class="subtitle" th:if="${profile.about != null && !profile.about.isEmpty()}" th:text="${profile.about}"></p>
+            <div class="cta-buttons">
+                <a href="/about" class="btn btn-primary">Learn More</a>
+                <a href="/chat" class="btn btn-secondary">Chat with AI</a>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </section>
+
+    <section class="highlights" th:if="${profile.experiences != null && !profile.experiences.isEmpty()}">
+        <div class="container">
+            <div class="highlight-card">
+                <div class="icon">💼</div>
+                <h3 th:text="${profile.experiences[0].title}">Current Role</h3>
+                <p th:text="${profile.experiences[0].company}">Company</p>
+            </div>
+            <div class="highlight-card">
+                <div class="icon">📊</div>
+                <h3 th:text="${profile.experiences.size()} + ' Positions'">Experience</h3>
+                <p>Professional Experience</p>
+            </div>
+            <div class="highlight-card" th:if="${profile.educations != null && !profile.educations.isEmpty() && profile.educations[0].degree != null}">
+                <div class="icon">🎓</div>
+                <h3 th:text="${profile.educations[0].degree}">Education</h3>
+                <p th:if="${profile.educations[0].field != null}" th:text="${profile.educations[0].field}">Field</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

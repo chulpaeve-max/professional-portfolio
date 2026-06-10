@@ -1,0 +1,32 @@
+# Environment variables and secrets
+.env
+*.env
+
+# Build outputs
+target/
+!target/classes/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+
+# IDE files
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# Dependencies
+node_modules/
+
+# Temporary files
+temp_about.html
+debug_edu.txt
+output.txt
+
+# Personal documents
+Profile.pdf
+
+# Code review files
+REVIEW.md

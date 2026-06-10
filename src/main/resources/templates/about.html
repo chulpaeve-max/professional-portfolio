@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" th:text="${profile.name != null && !profile.name.isEmpty() ? profile.name : 'Portfolio'}">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/career">Career</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/chat">AI Chat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1 th:if="${profile.name != null && !profile.name.isEmpty()}" th:text="${profile.name}">About Me</h1>
+        <h1 th:if="${profile.name == null || profile.name.isEmpty()}">About Me</h1>
+        <div class="header-line"></div>
+    </section>
+
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 th:if="${profile.experiences != null && !profile.experiences.isEmpty()}" th:text="${profile.experiences[0].title}">Professional Title</h2>
+                    <h2 th:if="${profile.experiences == null || profile.experiences.isEmpty()}">Professional</h2>
+                    <p class="lead" th:text="${profile.about}">Professional summary...</p>
+                    
+                    <div class="skills-section">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-tag" th:each="skill : ${profile.skills}" th:text="${skill}">Skill</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-sidebar">
+                    <div class="info-card" th:if="${profile.experiences != null && !profile.experiences.isEmpty()}">
+                        <h3>Current Position</h3>
+                        <div class="edu-item">
+                            <h4 th:text="${profile.experiences[0].title}">Title</h4>
+                            <p th:text="${profile.experiences[0].company}">Company</p>
+                            <span th:text="${profile.experiences[0].period}">Period</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card" th:if="${profile.educations != null && !profile.educations.isEmpty()}">
+                        <h3>Education</h3>
+                        <div class="edu-item" th:each="edu : ${profile.educations}">
+                            <h4 th:if="${edu.degree != null}" th:text="${edu.degree}">Degree</h4>
+                            <p th:if="${edu.field != null}" th:text="${edu.field}">Field</p>
+                            <span th:if="${edu.institution != null && edu.period != null}" th:text="${edu.institution + ' (' + edu.period + ')'}">Institution (Period)</span>
+                            <span th:if="${edu.institution != null && edu.period == null}" th:text="${edu.institution}">Institution</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

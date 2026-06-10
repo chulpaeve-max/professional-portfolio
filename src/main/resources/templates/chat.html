@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with AI Twin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" th:text="${profile.name != null && !profile.name.isEmpty() ? profile.name : 'Portfolio'}">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/career">Career</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/chat" class="active">AI Chat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Chat with My Digital Twin</h1>
+        <div class="header-line"></div>
+        <p class="header-subtitle">Ask me anything about my career, skills, and experience</p>
+    </section>
+
+    <section class="chat-section">
+        <div class="chat-container">
+            <div class="chat-intro">
+                <div class="ai-avatar">🤖</div>
+                <h3>
+                    <span th:if="${profile.name != null && !profile.name.isEmpty()}">
+                        Hi! I'm <span th:text="${profile.name}"></span>'s AI Assistant
+                    </span>
+                    <span th:if="${profile.name == null || profile.name.isEmpty()}">
+                        Hi! I'm the AI Assistant
+                    </span>
+                </h3>
+                <p>
+                    <span th:if="${profile.name != null && !profile.name.isEmpty()}">
+                        I can answer questions about <span th:text="${profile.name}"></span>'s professional experience, technical skills, education, and career journey. Feel free to ask me anything!
+                    </span>
+                    <span th:if="${profile.name == null || profile.name.isEmpty()}">
+                        I can answer questions about professional experience, technical skills, education, and career journey. Feel free to ask me anything!
+                    </span>
+                </p>
+                <div class="suggested-questions">
+                    <p><strong>Try asking:</strong></p>
+                    <button class="suggestion-btn" onclick="askQuestion('Tell me about your professional background')">Tell me about your professional background</button>
+                    <button class="suggestion-btn" onclick="askQuestion('What are your key skills and strengths?')">What are your key skills and strengths?</button>
+                    <button class="suggestion-btn" onclick="askQuestion('What is your educational background?')">What is your educational background?</button>
+                    <button class="suggestion-btn" onclick="askQuestion('What are your most recent roles?')">What are your most recent roles?</button>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will appear here -->
+            </div>
+
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <textarea 
+                        id="chatInput" 
+                        placeholder="Ask me about the career, skills, or experience..."
+                        rows="1"
+                    ></textarea>
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+</html>
