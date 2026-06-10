@@ -1,0 +1,30 @@
+# Git files
+.git
+.gitignore
+
+# Build outputs
+target/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Environment files
+.env
+
+# Temporary files
+temp_about.html
+debug_edu.txt
+output.txt
+
+# Documentation
+README.md
+DEPLOYMENT.md
+DEPLOYMENT-CHECKLIST.md
+TUTORIAL.md
+REVIEW.md
+
+# Deployment files
+render.yaml
+deploy-to-github.ps1
