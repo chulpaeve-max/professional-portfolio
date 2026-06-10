@@ -14,10 +14,8 @@ public class HomeController {
     private ProfileService profileService;
     
     @GetMapping("/")
-    public String home(Model model) {
-        ProfileData profile = profileService.getProfileData();
-        model.addAttribute("profile", profile);
-        return "index";
+    public String home() {
+        return "redirect:/about";
     }
     
     @GetMapping("/about")
