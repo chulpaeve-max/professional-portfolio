@@ -30,8 +30,8 @@ A dynamic portfolio website built with Spring Boot that reads content from a PDF
 
 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/portfolio-website.git
-cd portfolio-website
+git clone https://github.com/chulpaeve-max/professional-portfolio.git
+cd professional-portfolio
 ```
 
 2. Create `.env` file in the project root:
