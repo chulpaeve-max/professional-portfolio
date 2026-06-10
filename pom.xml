@@ -12,7 +12,7 @@
     </parent>
     
     <groupId>com.portfolio</groupId>
-    <artifactId>professional-website</artifactId>
+    <artifactId>professional-portfolio</artifactId>
     <version>1.0.0</version>
     
     <properties>
