@@ -1,7 +1,7 @@
 services:
   - type: web
     name: professional-portfolio
-    env: java
+    runtime: java
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/professional-portfolio-1.0.0.jar
     envVars:
