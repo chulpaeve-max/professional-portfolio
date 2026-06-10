@@ -26,7 +26,7 @@ debug_edu.txt
 output.txt
 
 # Personal documents
-Profile.pdf
+# Profile.pdf  # Commented out - needed for deployment
 
 # Code review files
 REVIEW.md
